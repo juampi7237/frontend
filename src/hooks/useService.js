@@ -2,7 +2,7 @@ import { useReducer, useState } from "react";
 import { serviceReducer } from "../reducers/ServiceReducers";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { createService, getAllServices, updateService } from "../api/serviceApi";
+import { createService, deleteService, getAllServices, updateService } from "../api/serviceApi";
 
 const initialService = [];
 
@@ -71,6 +71,7 @@ export const useServices = () => {
       confirmButtonText: "Si, eliminar!",
     }).then((result) => {
       if (result.isConfirmed) {
+        deleteService(id);
         dispatch({
           type: "deleteService",
           payload: id,

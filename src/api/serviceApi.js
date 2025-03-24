@@ -36,10 +36,10 @@ export const updateService = async ({ id, name, description }) => {
   }
 };
 
-// export const remove = async (id) => {
-//   try {
-//       await axios.delete(`${BASE_URL}/${id}`);
-//   } catch (error) {
-//       console.error(error);
-//   }
-// }
+export const deleteService = async (id) => {
+  try {
+    await api.delete(`/services/${id}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
