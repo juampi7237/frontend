@@ -2,7 +2,7 @@ import { useReducer, useState } from "react";
 import { serviceReducer } from "../reducers/ServiceReducers";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { getAllServices } from "../api/serviceApi";
+import { createService, getAllServices, updateService } from "../api/serviceApi";
 
 const initialService = [];
 
@@ -33,18 +33,20 @@ export const useServices = () => {
     }
   };
 
-  const handlerAddService = (service) => {
+  const handlerAddService = async (service) => {
     // console.log(service);
-    let type;
+
+    let response;
 
     if (service.id === 0) {
-      type = "addService";
+      response = await createService(service);
     } else {
-      type = "updateService";
+      response = await updateService(service);
     }
+
     dispatch({
-      type,
-      payload: service,
+      type: service.id === 0 ? "addService" : "updateService",
+      payload: response.data,
     });
 
     Swal.fire(
