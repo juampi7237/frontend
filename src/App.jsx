@@ -1,44 +1,38 @@
-import { useReducer } from "react";
 import ServiceForm from "./components/Services/ServiceForm";
 import ServicesList from "./components/Services/ServicesList";
-import { serviceReducer } from "./reducers/ServiceReducers";
+import { useServices } from "./hooks/useService";
 
 function App() {
-  const initialUsers = [
-    {
-      id: 1,
-      name: "pepe",
-      description: "12345",
-    },
-  ];
-
-  const [services, dispatch] = useReducer(serviceReducer, initialUsers);
-
-  const handlerAddService = (service) => {
-    console.log(service);
-    dispatch({
-      type: "addService",
-      payload: service,
-    });
-  };
-
-  const handlerRemoveService = (id) => {
-    // console.log(id);
-    dispatch({
-      type: "deleteService",
-      payload: id,
-    });
-  };
+  const {
+    services,
+    serviceSelected,
+    initialServiceForm,
+    handlerAddService,
+    handlerRemoveService,
+    handlerServiceSelectedForm,
+  } = useServices();
 
   return (
     <div className="container my-4">
       <h2>Maestria App</h2>
       <div className="row">
         <div className="col">
-          <ServiceForm handlerAddService={handlerAddService} />
+          <ServiceForm
+            handlerAddService={handlerAddService}
+            serviceSelected={serviceSelected}
+            initialServiceForm={initialServiceForm}
+          />
         </div>
         <div className="col">
-          <ServicesList handlerRemoveService={handlerRemoveService} services={services} />
+          {services.length === 0 ? (
+            <div className="alert alert-warning">No hay Servicios en el sistema!</div>
+          ) : (
+            <ServicesList
+              handlerServiceSelectedForm={handlerServiceSelectedForm}
+              handlerRemoveService={handlerRemoveService}
+              services={services}
+            />
+          )}
         </div>
       </div>
     </div>

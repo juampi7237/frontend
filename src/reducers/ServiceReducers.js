@@ -10,6 +10,16 @@ export const serviceReducer = (state = [], action) => {
       ];
     case "deleteService":
       return state.filter((service) => service.id !== action.payload);
+    case "updateService":
+      return state.map((u) => {
+        if (u.id === action.payload.id) {
+          return {
+            ...action.payload,
+            password: u.password,
+          };
+        }
+        return u;
+      });
     default:
       return state;
   }

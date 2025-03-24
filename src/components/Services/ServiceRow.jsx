@@ -1,4 +1,4 @@
-export default function ServiceRow({ handlerRemoveService, id, name, description }) {
+export default function ServiceRow({ handlerServiceSelectedForm, handlerRemoveService, id, name, description }) {
   const onRemoveService = (id) => {
     handlerRemoveService(id);
   };
@@ -9,7 +9,17 @@ export default function ServiceRow({ handlerRemoveService, id, name, description
       <td>{name}</td>
       <td>{description}</td>
       <td>
-        <button type="button" className="btn btn-secondary btn-sm">
+        <button
+          type="button"
+          className="btn btn-secondary btn-sm"
+          onClick={() =>
+            handlerServiceSelectedForm({
+              id,
+              name,
+              description,
+            })
+          }
+        >
           update
         </button>
       </td>

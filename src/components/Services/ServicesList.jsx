@@ -1,6 +1,6 @@
 import ServiceRow from "./ServiceRow";
 
-export default function ServicesList({ handlerRemoveService, services = [] }) {
+export default function ServicesList({ handlerServiceSelectedForm, handlerRemoveService, services = [] }) {
   return (
     <table className="table table-hover table-striped">
       <thead>
@@ -20,6 +20,7 @@ export default function ServicesList({ handlerRemoveService, services = [] }) {
             name={name}
             description={description}
             handlerRemoveService={handlerRemoveService}
+            handlerServiceSelectedForm={handlerServiceSelectedForm}
           />
         ))}
       </tbody>

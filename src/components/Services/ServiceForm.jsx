@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
-const initialUserForm = {
-  name: "",
-  description: "",
-};
+export default function ServiceForm({ handlerAddService, initialServiceForm, serviceSelected }) {
+  const [serviceForm, setServiceForm] = useState(initialServiceForm);
 
-export default function ServiceForm({ handlerAddService }) {
-  const [serviceForm, setServiceForm] = useState(initialUserForm);
+  const { id, name, description } = serviceForm;
 
-  const { name, description } = serviceForm;
+  useEffect(() => {
+    setServiceForm({
+      ...serviceSelected,
+      password: "",
+    });
+  }, [serviceSelected]);
 
   const onInputChange = ({ target }) => {
     // console.log(target.value)
@@ -22,12 +25,12 @@ export default function ServiceForm({ handlerAddService }) {
   const onSubmit = (event) => {
     event.preventDefault();
     if (!name || !description) {
-      alert("Debe completar los campos del formulario!");
+      Swal.fire("Erro de validacion", "Debe completar los campos del formulario!", "error");
       return;
     }
     console.log(serviceForm);
     handlerAddService(serviceForm);
-    setServiceForm(initialUserForm);
+    setServiceForm(initialServiceForm);
   };
 
   return (
@@ -41,8 +44,9 @@ export default function ServiceForm({ handlerAddService }) {
         value={description}
         onChange={onInputChange}
       />
+      <input type="hidden" name="id" value={id} />
       <button className="btn btn-primary" type="submit">
-        Crear
+        {id > 0 ? "Editar" : "Crear"}
       </button>
     </form>
   );
