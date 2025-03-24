@@ -56,4 +56,17 @@ export const deleteProduct = async (id) => {
     }
     throw new Error("Error inesperado al eliminar el producto");
   }
+};
+
+export const getProductById = async (id) => {
+  try {
+    const { data } = await api(`/products/${id}`);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error)) {
+      const errorMessage = error.response?.data?.error || "Error al obtener los detalles del producto";
+      throw new Error(errorMessage);
+    }
+    throw new Error("Error inesperado al obtener los detalles del producto");
+  }
 }; 

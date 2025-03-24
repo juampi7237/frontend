@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductRow({ id, name, description, price }) {
   const { handlerProductSelectedForm, handlerRemoveProduct } = useContext(ProductContext);
+  const navigate = useNavigate();
 
   const onRemoveProduct = (id) => {
     handlerRemoveProduct(id);
@@ -17,7 +19,14 @@ export default function ProductRow({ id, name, description, price }) {
       <td>
         <button
           type="button"
-          className="btn btn-secondary btn-sm"
+          className="btn btn-info btn-sm me-2"
+          onClick={() => navigate(`/products/${id}`)}
+        >
+          Ver Detalles
+        </button>
+        <button
+          type="button"
+          className="btn btn-secondary btn-sm me-2"
           onClick={() =>
             handlerProductSelectedForm({
               id,
@@ -29,8 +38,6 @@ export default function ProductRow({ id, name, description, price }) {
         >
           update
         </button>
-      </td>
-      <td>
         <button type="button" className="btn btn-danger btn-sm" onClick={() => onRemoveProduct(id)}>
           remove
         </button>

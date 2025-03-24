@@ -13,8 +13,7 @@ export default function ProductsList() {
           <th>name</th>
           <th>description</th>
           <th>price</th>
-          <th>update</th>
-          <th>remove</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -24,4 +23,4 @@ export default function ProductsList() {
       </tbody>
     </table>
   );
-} 
+}
