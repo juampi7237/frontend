@@ -19,6 +19,7 @@ const initialServiceForm = {
 export const useServices = () => {
   const [services, dispatch] = useReducer(serviceReducer, initialService);
   const [serviceSelected, setServiceSelected] = useState(initialServiceForm);
+  const [visibleForm, setVisibleForm] = useState(false);
 
   const handlerAddService = (service) => {
     // console.log(service);
@@ -39,6 +40,7 @@ export const useServices = () => {
       service.id === 0 ? "El servicio ha sido creado con exito!" : "El servicio ha sido actualizado con exito!",
       "success"
     );
+    handlerCloseForm();
   };
 
   const handlerRemoveService = (id) => {
@@ -65,14 +67,27 @@ export const useServices = () => {
 
   const handlerServiceSelectedForm = (service) => {
     // console.log(service)
+    setVisibleForm(true);
     setServiceSelected({ ...service });
+  };
+
+  const handlerOpenForm = () => {
+    setVisibleForm(true);
+  };
+
+  const handlerCloseForm = () => {
+    setVisibleForm(false);
+    setServiceSelected(initialServiceForm);
   };
   return {
     services,
     serviceSelected,
     initialServiceForm,
+    visibleForm,
     handlerAddService,
     handlerRemoveService,
     handlerServiceSelectedForm,
+    handlerOpenForm,
+    handlerCloseForm,
   };
 };
