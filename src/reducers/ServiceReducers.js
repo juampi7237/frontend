@@ -5,7 +5,6 @@ export const serviceReducer = (state = [], action) => {
         ...state,
         {
           ...action.payload,
-          id: new Date().getTime(),
         },
       ];
     case "deleteService":
@@ -20,6 +19,8 @@ export const serviceReducer = (state = [], action) => {
         }
         return u;
       });
+    case "loadingServices":
+      return action.payload;
     default:
       return state;
   }

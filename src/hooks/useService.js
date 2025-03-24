@@ -1,14 +1,10 @@
 import { useReducer, useState } from "react";
 import { serviceReducer } from "../reducers/ServiceReducers";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { getAllServices } from "../api/serviceApi";
 
-const initialService = [
-  {
-    id: 1,
-    name: "pepe",
-    description: "12345",
-  },
-];
+const initialService = [];
 
 const initialServiceForm = {
   id: 0,
@@ -20,6 +16,22 @@ export const useServices = () => {
   const [services, dispatch] = useReducer(serviceReducer, initialService);
   const [serviceSelected, setServiceSelected] = useState(initialServiceForm);
   const [visibleForm, setVisibleForm] = useState(false);
+  const navigate = useNavigate();
+
+  const getServices = async () => {
+    try {
+      const result = await getAllServices();
+      if (result) {
+        dispatch({
+          type: "loadingServices",
+          payload: result,
+        });
+      }
+    } catch (error) {
+      console.error("Error loading services:", error);
+      Swal.fire("Error", "No se pudieron cargar los servicios", "error");
+    }
+  };
 
   const handlerAddService = (service) => {
     // console.log(service);
@@ -41,6 +53,7 @@ export const useServices = () => {
       "success"
     );
     handlerCloseForm();
+    navigate("/services");
   };
 
   const handlerRemoveService = (id) => {
@@ -89,5 +102,6 @@ export const useServices = () => {
     handlerServiceSelectedForm,
     handlerOpenForm,
     handlerCloseForm,
+    getServices,
   };
 };
