@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ServiceForm from "./components/Services/ServiceForm";
+import ServicesList from "./components/Services/ServicesList";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const initialUsers = [
+    {
+      id: 1,
+      name: "pepe",
+      descripton: "12345",
+    },
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container my-4">
+      <h2>Maestria App</h2>
+      <div className="row">
+        <div className="col">
+          <ServiceForm />
+        </div>
+        <div className="col">
+          <ServicesList users={initialUsers} />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
