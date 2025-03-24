@@ -1,4 +1,9 @@
-export default function ServiceRow({ handlerServiceSelectedForm, handlerRemoveService, id, name, description }) {
+import { useContext } from "react";
+import { ServiceContext } from "../../contexts/ServiceContext";
+
+export default function ServiceRow({ id, name, description }) {
+  const { handlerServiceSelectedForm, handlerRemoveService } = useContext(ServiceContext);
+
   const onRemoveService = (id) => {
     handlerRemoveService(id);
   };

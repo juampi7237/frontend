@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { ServiceContext } from "../../contexts/ServiceContext";
 import ServiceRow from "./ServiceRow";
 
-export default function ServicesList({ handlerServiceSelectedForm, handlerRemoveService, services = [] }) {
+export default function ServicesList() {
+  const { services } = useContext(ServiceContext);
+
   return (
     <table className="table table-hover table-striped">
       <thead>
@@ -14,14 +18,7 @@ export default function ServicesList({ handlerServiceSelectedForm, handlerRemove
       </thead>
       <tbody>
         {services.map(({ id, name, description }) => (
-          <ServiceRow
-            key={id}
-            id={id}
-            name={name}
-            description={description}
-            handlerRemoveService={handlerRemoveService}
-            handlerServiceSelectedForm={handlerServiceSelectedForm}
-          />
+          <ServiceRow key={id} id={id} name={name} description={description} />
         ))}
       </tbody>
     </table>

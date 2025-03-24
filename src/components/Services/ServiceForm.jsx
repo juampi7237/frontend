@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { ServiceContext } from "../../contexts/ServiceContext";
 
-export default function ServiceForm({ handlerAddService, initialServiceForm, serviceSelected }) {
+export default function ServiceForm({ serviceSelected, handlerCloseForm }) {
+  const { initialServiceForm, handlerAddService } = useContext(ServiceContext);
+
   const [serviceForm, setServiceForm] = useState(initialServiceForm);
 
   const { id, name, description } = serviceForm;
@@ -33,6 +36,11 @@ export default function ServiceForm({ handlerAddService, initialServiceForm, ser
     setServiceForm(initialServiceForm);
   };
 
+  const onCloseForm = () => {
+    handlerCloseForm();
+    setServiceForm(initialServiceForm);
+  };
+
   return (
     <form onSubmit={onSubmit}>
       <input className="form-control my-3 w-75" placeholder="Name" name="name" value={name} onChange={onInputChange} />
@@ -48,6 +56,11 @@ export default function ServiceForm({ handlerAddService, initialServiceForm, ser
       <button className="btn btn-primary" type="submit">
         {id > 0 ? "Editar" : "Crear"}
       </button>
+      {!handlerCloseForm || (
+        <button className="btn btn-primary mx-2" type="button" onClick={() => onCloseForm()}>
+          Cerrar
+        </button>
+      )}
     </form>
   );
 }
