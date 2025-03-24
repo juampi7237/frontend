@@ -14,6 +14,19 @@ export const getAllServices = async () => {
   }
 };
 
+export const getServiceById = async (id) => {
+  try {
+    const { data } = await api(`/services/${id}`);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error)) {
+      const errorMessage = error.response?.data?.error || "Error al obtener los detalles del servicio";
+      throw new Error(errorMessage);
+    }
+    throw new Error("Error inesperado al obtener los detalles del servicio");
+  }
+};
+
 export const createService = async ({ name, description }) => {
   try {
     return await api.post("/services", {

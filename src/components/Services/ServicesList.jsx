@@ -12,8 +12,7 @@ export default function ServicesList() {
           <th>#</th>
           <th>name</th>
           <th>description</th>
-          <th>update</th>
-          <th>remove</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
