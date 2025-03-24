@@ -1,20 +1,26 @@
 import ServiceRow from "./ServiceRow";
 
-export default function ServicesList({ users = [] }) {
+export default function ServicesList({ handlerRemoveService, services = [] }) {
   return (
     <table className="table table-hover table-striped">
       <thead>
         <tr>
           <th>#</th>
-          <th>username</th>
-          <th>email</th>
+          <th>name</th>
+          <th>description</th>
           <th>update</th>
           <th>remove</th>
         </tr>
       </thead>
       <tbody>
-        {users.map(({ id, username, email }) => (
-          <ServiceRow key={id} id={id} username={username} email={email} />
+        {services.map(({ id, name, description }) => (
+          <ServiceRow
+            key={id}
+            id={id}
+            name={name}
+            description={description}
+            handlerRemoveService={handlerRemoveService}
+          />
         ))}
       </tbody>
     </table>

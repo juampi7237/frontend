@@ -5,16 +5,16 @@ const initialUserForm = {
   description: "",
 };
 
-export default function ServiceForm() {
-  const [userForm, setUserForm] = useState(initialUserForm);
+export default function ServiceForm({ handlerAddService }) {
+  const [serviceForm, setServiceForm] = useState(initialUserForm);
 
-  const { name, description } = userForm;
+  const { name, description } = serviceForm;
 
   const onInputChange = ({ target }) => {
     // console.log(target.value)
     const { name, value } = target;
-    setUserForm({
-      ...userForm,
+    setServiceForm({
+      ...serviceForm,
       [name]: value,
     });
   };
@@ -25,9 +25,9 @@ export default function ServiceForm() {
       alert("Debe completar los campos del formulario!");
       return;
     }
-    console.log(userForm);
-
-    setUserForm(initialUserForm);
+    console.log(serviceForm);
+    handlerAddService(serviceForm);
+    setServiceForm(initialUserForm);
   };
 
   return (
