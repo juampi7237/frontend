@@ -4,6 +4,8 @@ import ServiceDetailPage from "../page/ServiceDetailPage";
 import ProductPage from "../page/ProductPage";
 import ProductDetailPage from "../page/ProductDetailPage";
 import HomePage from "../page/HomePage";
+import AboutPage from "../page/AboutPage";
+import ContactPage from "../page/ContactPage";
 import Layout from "../components/Layout/Layout";
 import { ServiceProvider } from "../contexts/ServiceProvider";
 import { ProductProvider } from "../contexts/ProductProvider";
@@ -15,6 +17,8 @@ export const ServiceRoutes = () => {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/services" element={<ServicePage />} />
             <Route path="/services/:id" element={<ServiceDetailPage />} />
             <Route path="/products" element={<ProductPage />} />

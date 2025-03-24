@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ServiceContext } from "../contexts/ServiceContext";
 import { getServiceById, addProductsToService, removeProductsFromService } from "../api/serviceApi";
@@ -117,10 +117,7 @@ export default function ServiceDetailPage() {
                 <td>{product.description}</td>
                 <td>${product.price}</td>
                 <td>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => handleRemoveProduct(product.id)}
-                  >
+                  <button className="btn btn-danger btn-sm" onClick={() => handleRemoveProduct(product.id)}>
                     Eliminar
                   </button>
                 </td>
@@ -137,12 +134,8 @@ export default function ServiceDetailPage() {
       </button>
 
       {showAddModal && (
-        <AddProductsModal
-          serviceId={id}
-          onClose={() => setShowAddModal(false)}
-          onSave={handleAddProducts}
-        />
+        <AddProductsModal serviceId={id} onClose={() => setShowAddModal(false)} onSave={handleAddProducts} />
       )}
     </div>
   );
-} 
+}

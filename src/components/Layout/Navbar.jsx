@@ -34,6 +34,22 @@ export default function Navbar() {
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <Link 
+                className={`nav-link ${isActive("/") ? "active" : ""}`} 
+                to="/"
+              >
+                Inicio
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                className={`nav-link ${isActive("/about") ? "active" : ""}`} 
+                to="/about"
+              >
+                Quiénes Somos
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
                 className={`nav-link ${isActive("/services") ? "active" : ""}`} 
                 to="/services"
               >
@@ -46,6 +62,14 @@ export default function Navbar() {
                 to="/products"
               >
                 Productos
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                className={`nav-link ${isActive("/contact") ? "active" : ""}`} 
+                to="/contact"
+              >
+                Contacto
               </Link>
             </li>
           </ul>
