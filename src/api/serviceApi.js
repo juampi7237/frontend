@@ -56,3 +56,31 @@ export const deleteService = async (id) => {
     console.error(error);
   }
 };
+
+export const addProductsToService = async (serviceId, productIds) => {
+  try {
+    const { data } = await api.post(`/services/${serviceId}/add`, productIds);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error)) {
+      const errorMessage = error.response?.data?.error || "Error al agregar productos al servicio";
+      throw new Error(errorMessage);
+    }
+    throw new Error("Error inesperado al agregar productos al servicio");
+  }
+};
+
+export const removeProductsFromService = async (serviceId, productIds) => {
+  try {
+    const { data } = await api.delete(`/services/${serviceId}/remove`, {
+      data: productIds
+    });
+    return data;
+  } catch (error) {
+    if (isAxiosError(error)) {
+      const errorMessage = error.response?.data?.error || "Error al eliminar productos del servicio";
+      throw new Error(errorMessage);
+    }
+    throw new Error("Error inesperado al eliminar productos del servicio");
+  }
+};
