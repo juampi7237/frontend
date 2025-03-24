@@ -16,16 +16,12 @@ export default function ServiceRow({ id, name, description }) {
       <td>{name}</td>
       <td>{description}</td>
       <td>
-        <button
-          type="button"
-          className="btn btn-info btn-sm me-2"
-          onClick={() => navigate(`/services/${id}`)}
-        >
+        <button type="button" className="btn btn-warning btn-sm me-2" onClick={() => navigate(`/services/${id}`)}>
           Ver Detalles
         </button>
         <button
           type="button"
-          className="btn btn-secondary btn-sm me-2"
+          className="btn btn-success btn-sm me-2"
           onClick={() =>
             handlerServiceSelectedForm({
               id,

@@ -17,16 +17,12 @@ export default function ProductRow({ id, name, description, price }) {
       <td>{description}</td>
       <td>${price}</td>
       <td>
-        <button
-          type="button"
-          className="btn btn-info btn-sm me-2"
-          onClick={() => navigate(`/products/${id}`)}
-        >
+        <button type="button" className="btn btn-warning btn-sm me-2" onClick={() => navigate(`/products/${id}`)}>
           Ver Detalles
         </button>
         <button
           type="button"
-          className="btn btn-secondary btn-sm me-2"
+          className="btn btn-success btn-sm me-2"
           onClick={() =>
             handlerProductSelectedForm({
               id,
@@ -44,4 +40,4 @@ export default function ProductRow({ id, name, description, price }) {
       </td>
     </tr>
   );
-} 
+}
