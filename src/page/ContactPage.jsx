@@ -29,11 +29,11 @@ export default function ContactPage() {
         <div className="col-md-4 mb-4">
           <div className="card h-100 shadow-sm">
             <div className="card-body">
-              <h3 className="card-title mb-4">Información de Contacto</h3>
+              <h3 className="card-title mb-4">Informacion de Contacto</h3>
               <div className="mb-3">
-                <h5>Dirección</h5>
+                <h5>Direccion</h5>
                 <p>
-                  Crevaux (34
+                  Crevaux 834
                   <br />
                   Tarija, Bolivia
                 </p>
@@ -47,7 +47,7 @@ export default function ContactPage() {
                 <p>juan.gonzales.a@ucb.edu.bo</p>
               </div>
               <div>
-                <h5>Horario de Atención</h5>
+                <h5>Horario de Atencion</h5>
                 <p>
                   Lunes a Viernes: 9:00 AM - 6:00 PM
                   <br />

@@ -18,7 +18,7 @@ export default function ProductRow({ id, name, description, price }) {
       <td>${price}</td>
       <td>
         <button type="button" className="btn btn-warning btn-sm me-2" onClick={() => navigate(`/products/${id}`)}>
-          Ver Detalles
+          details
         </button>
         <button
           type="button"

@@ -33,42 +33,27 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive("/") ? "active" : ""}`} 
-                to="/"
-              >
+              <Link className={`nav-link ${isActive("/") ? "active" : ""}`} to="/">
                 Inicio
               </Link>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive("/about") ? "active" : ""}`} 
-                to="/about"
-              >
-                Quiénes Somos
+              <Link className={`nav-link ${isActive("/about") ? "active" : ""}`} to="/about">
+                Quienes Somos
               </Link>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive("/services") ? "active" : ""}`} 
-                to="/services"
-              >
+              <Link className={`nav-link ${isActive("/services") ? "active" : ""}`} to="/services">
                 Servicios
               </Link>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive("/products") ? "active" : ""}`} 
-                to="/products"
-              >
+              <Link className={`nav-link ${isActive("/products") ? "active" : ""}`} to="/products">
                 Productos
               </Link>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive("/contact") ? "active" : ""}`} 
-                to="/contact"
-              >
+              <Link className={`nav-link ${isActive("/contact") ? "active" : ""}`} to="/contact">
                 Contacto
               </Link>
             </li>
@@ -89,4 +74,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-} 
+}

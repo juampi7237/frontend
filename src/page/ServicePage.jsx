@@ -14,12 +14,12 @@ export default function ServicePage() {
     <>
       {!visibleForm || <ServiceModalForm />}
       <div className="container my-4">
-        <h2>Maestria App</h2>
+        <h2>Services</h2>
         <div className="row">
           <div className="col">
             {visibleForm || (
               <button className="btn btn-primary my-2" onClick={handlerOpenForm}>
-                Nuevo Servicio
+                Nes Service
               </button>
             )}
 

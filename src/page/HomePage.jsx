@@ -13,7 +13,7 @@ export default function HomePage() {
               para nuestros clientes.
             </p>
             <Link to="/contact" className="btn btn-primary btn-lg">
-              Contáctanos
+              Contactanos
             </Link>
           </div>
           <div className="col-md-6">

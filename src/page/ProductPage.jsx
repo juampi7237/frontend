@@ -14,12 +14,12 @@ export default function ProductPage() {
     <>
       {!visibleForm || <ProductModalForm />}
       <div className="container my-4">
-        <h2>Maestria App</h2>
+        <h2>Products</h2>
         <div className="row">
           <div className="col">
             {visibleForm || (
               <button className="btn btn-primary my-2" onClick={handlerOpenForm}>
-                Nuevo Producto
+                New Product
               </button>
             )}
 
@@ -33,4 +33,4 @@ export default function ProductPage() {
       </div>
     </>
   );
-} 
+}
